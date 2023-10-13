@@ -17,10 +17,10 @@ When it's lower than one standard deviation below the deviation rate, sell it (b
 At the same time, including the transaction fees of Taiwan Stock Exchange into the cost.  
 ```mermaid
 graph LR
-A[Hard edge] -->|Link text| B(Round edge)
-B --> C{Decision}
-C -->|One| D[Result one]
-C -->|Two| E[Result two]
+A[get moving average] -->|Link text| B(Round edge)
+B --> C{greater or lower one std?}
+C -->|greater| D[Buy]
+C -->|lower| E[Sell]
 ```
 
 ## GradientBoost predictor
