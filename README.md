@@ -1,7 +1,7 @@
 # tw_stock_predictor
 
 ## download data from: https://www.twse.com.tw/exchangeReport/MI_5MINS_INDEX
-use auto_update.py to update the data.
+use auto_update.py to update the data from TWSE(Taiwan Stock Exchange).
 
 ## SVM predictor
 use the features (['R103_ROE稅後', 'R402_營業毛利成長率']) to train SVM model.
