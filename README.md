@@ -33,3 +33,4 @@ website: https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-i
 
 ## RandomForest predictor
 use RandomForest.py to output the best features that influence stock the most. Then, combine them with tradition strategy.
+theory: https://link.springer.com/content/pdf/10.1023/A:1010933404324.pdf
