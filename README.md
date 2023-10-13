@@ -26,8 +26,10 @@ C -->|lower| E[Sell]
 ## GradientBoost predictor
 use GradientBoost.py to compute the result of lightgbm model.
 
+
 ### lgbm_BetterParams.py
 use lgbm_BetterParams.py to compute the best parameters for GradientBoost fit the data.
+website: https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc
 
 ## RandomForest predictor
 use RandomForest.py to output the best features that influence stock the most. Then, combine them with tradition strategy.
