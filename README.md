@@ -17,8 +17,8 @@ When it's lower than one standard deviation below the deviation rate, sell it (b
 At the same time, including the transaction fees of Taiwan Stock Exchange into the cost.  
 ```mermaid
 graph LR
-A[get moving average] -->|Link text| B(Round edge)
-B --> C{greater or lower one std?}
+A[get moving average] -->|calculate| B(standard deviation)
+B --> C{greater or lower?}
 C -->|greater| D[Buy]
 C -->|lower| E[Sell]
 ```
