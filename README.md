@@ -56,6 +56,6 @@ graph TD
     finlab.crawler -->|provide| scraping stock data
     finlab.data -->|provide| obtain and process data
     finlab.labels -->|provide| generate stock labels
-    finlab.ml -->|provide| tools for machine learning機器學習工具
+    finlab.ml -->|provide| tools for machine learning
     finlab.utility -->|provide| several tools
 ```
