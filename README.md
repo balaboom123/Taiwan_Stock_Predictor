@@ -43,7 +43,7 @@ flowchart LR
 A(data) -->|RandomForest.py| B(training complete)
 B(training complete) -->|backtest| C(return)
 ```
-```
+```mermaid
 graph TD
     GradientBoost -->|使用| finlab.data
     GradientBoost -->|使用| GradientBoostingRegressor
