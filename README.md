@@ -43,3 +43,21 @@ flowchart LR
 A(data) -->|RandomForest.py| B(training complete)
 B(training complete) -->|backtest| C(return)
 ```
+```
+graph TD
+    GradientBoost -->|使用| finlab.data
+    GradientBoost -->|使用| GradientBoostingRegressor
+    RandomForest -->|使用| finlab.data
+    RandomForest -->|使用| RandomForestRegressor
+    auto_update -->|使用| finlab.crawler
+    finlab.backtest -->|提供| 回測功能
+    finlab.crawler -->|提供| 抓取股票數據
+    finlab.data -->|使用| finlab.crawler
+    finlab.data -->|提供| 獲取和處理股票數據
+    finlab.labels -->|提供| 生成股票數據的標籤
+    finlab.ml -->|提供| 機器學習工具
+    finlab.plot_candles -->|提供| 繪製蠟燭圖
+    finlab.utility -->|提供| 實用工具
+    lgbm_BetterParams -->|使用| LGBMRegressor
+    traditional_strategy -->|提供| 傳統股票交易策略
+```
