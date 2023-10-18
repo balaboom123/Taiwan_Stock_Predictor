@@ -60,13 +60,3 @@ graph TD
     finlab_utility["finlab.utility"] -->|provide| several_tools["several tools"]
 ```
 
-```mermaid
-graph TD
-    finlab.backtest -->|provide| backtest
-    finlab.crawler -->|provide| scraping stock data
-    finlab.data -->|provide| obtain and process data
-    finlab.labels -->|provide| generate stock labels
-    finlab.ml -->|provide| tools for machine learning
-    finlab.utility -->|provide| several tools
-```
-
