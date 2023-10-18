@@ -52,15 +52,6 @@ B(training complete) -->|backtest| C(return)
 ## Finlab
 ```mermaid
 graph TD
-    finlab.backtest -->|provide| backtest
-    finlab.crawler -->|provide| scraping stock data
-    finlab.data -->|provide| obtain and process data
-    finlab.labels -->|provide| generate stock labels
-    finlab.ml -->|provide| tools for machine learning
-    finlab.utility -->|provide| several tools
-```
-```mermaid
-graph TD
     finlab_backtest["finlab.backtest"] -->|provide| backtest["backtest"]
     finlab_crawler["finlab.crawler"] -->|provide| scraping_stock_data["scraping stock data"]
     finlab_data["finlab.data"] -->|provide| obtain_and_process_data["obtain and process data"]
@@ -68,3 +59,14 @@ graph TD
     finlab_ml["finlab.ml"] -->|provide| tools_for_machine_learning["tools for machine learning"]
     finlab_utility["finlab.utility"] -->|provide| several_tools["several tools"]
 ```
+
+```mermaid
+graph TD
+    finlab.backtest -->|provide| backtest
+    finlab.crawler -->|provide| scraping stock data
+    finlab.data -->|provide| obtain and process data
+    finlab.labels -->|provide| generate stock labels
+    finlab.ml -->|provide| tools for machine learning
+    finlab.utility -->|provide| several tools
+```
+
