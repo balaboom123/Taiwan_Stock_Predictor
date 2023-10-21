@@ -1,5 +1,8 @@
 # tw_stock_predictor
 
+## paper
+link: https://drive.google.com/file/d/18LaSD_i7G3_wZnDFkqbBoT5IaZPyrHqu/view?usp=sharing  
+ 
 ## Dataset
 ### auto_update.py
 download data from: https://www.twse.com.tw/exchangeReport/MI_5MINS_INDEX  
