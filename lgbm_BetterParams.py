@@ -4,20 +4,31 @@ from scipy.stats import uniform as sp_uniform
 import lightgbm as lgb
 from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
 
+# Load fundamental features dataset
 dataset = ml.fundamental_features()
+
+# Remove columns with more than 50% NaN values and rows with any NaN values
 dataset = dataset.dropna(thresh=int(len(dataset) * 0.5), axis=1).dropna(how='any')
+
+# Get a list of feature columns
 features = list(dataset.columns)
 
+# Add a profit prediction column to the dataset
 ml.add_profit_prediction(dataset)
+
+# Remove rows with NaN values
 dataset = dataset.dropna()
 
+# Split the dataset into training and testing sets based on a date condition
 date_arr = dataset.index.get_level_values('date') < '2017'
 dataset_train = dataset[date_arr]
 dataset_test = dataset[~date_arr]
 
+# Define the training and testing data
 train = dataset_train[features], dataset_train['return'] > 1
 test = dataset_test[features], dataset_test['return'] > 1
 
+# Define fit parameters for the LightGBM model
 fit_params = {"early_stopping_rounds": 30,
               "eval_metric": 'auc',
               "eval_set": [test],
@@ -25,6 +36,7 @@ fit_params = {"early_stopping_rounds": 30,
               'verbose': 100,
               'categorical_feature': 'auto'}
 
+# Define hyperparameter search space for RandomizedSearchCV
 param_test = {'num_leaves': sp_randint(6, 50),
               'min_child_samples': sp_randint(100, 500),
               'min_child_weight': [1e-5, 1e-3, 1e-2, 1e-1, 1, 1e1, 1e2, 1e3, 1e4],
@@ -33,9 +45,13 @@ param_test = {'num_leaves': sp_randint(6, 50),
               'reg_alpha': [0, 1e-1, 1, 2, 5, 7, 10, 50, 100],
               'reg_lambda': [0, 1e-1, 1, 5, 10, 20, 50, 100]}
 
+# Number of hyperparameter combinations to test
 n_HP_points_to_test = 100
 
+# Initialize the LightGBM classifier
 clf = lgb.LGBMClassifier(max_depth=-1, random_state=314, silent=True, metric='None', n_jobs=4, n_estimators=5000)
+
+# Perform RandomizedSearchCV to find the best hyperparameters
 gs = RandomizedSearchCV(
     estimator=clf, param_distributions=param_test,
     n_iter=n_HP_points_to_test,
@@ -45,14 +61,8 @@ gs = RandomizedSearchCV(
     random_state=314,
     verbose=True)
 
+# Fit the model on the training data with the best hyperparameters
 gs.fit(*train, **fit_params)
-print(gs.best_estimator_)
-colsample_bytree=0.9233783583096781, metric='None',
-               min_child_samples=399, min_child_weight=0.1, n_estimators=5000,
-               n_jobs=4, num_leaves=13, random_state=314, reg_alpha=2,
-               reg_lambda=5, subsample=0.8548443912440804
 
-colsample_bytree=0.8708421484750899, metric='None',
-               min_child_samples=475, min_child_weight=1e-05, n_estimators=5000,
-               n_jobs=4, num_leaves=22, random_state=314, reg_alpha=0.1,
-               reg_lambda=1, subsample=0.5872540295820521
+# Print the best estimator found by RandomizedSearchCV
+print(gs.best_estimator_)
